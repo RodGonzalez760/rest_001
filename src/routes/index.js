@@ -37,3 +37,5 @@ module.exports = function({ HomeRoutes }){
 
 
 // 13.-Terminado el punto 12 volvemos al container.js
+
+// 22.- FIN VIDEO 86 - TERMINADO EL PASO 21 VAMOS A: directorio models creando el archivo user.model.js
