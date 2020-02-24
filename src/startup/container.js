@@ -16,9 +16,11 @@ const { HomeController } = require('../controllers')
 // 11.-routes, importamos HomeRoutes desde index.routes->register
 const { HomeRoutes } = require('../routes/index.routes');
 
-// 25.-models, importamos desde la capa models->a regiser
+// 25.-models, importamos desde la capa models->a register
 const { User, Comment, Idea } = require("../models");
 
+// 29.-repositories, importamos desde la capa repositories->a register
+const { UserRepository, IdeaRepository, CommentRepository } = require("../repositories");
 
 // 13.-configuración del nuevo route -> register
 const Routes = require("../routes");
@@ -43,6 +45,10 @@ container
     User: asValue(User),                    //25.-el objeto será inyectado como tal
     Idea: asValue(Idea),
     Comment: asValue(Comment)
+}).register({                               //29
+    UserRepository: asClass(UserRepository).singleton(),
+    IdeaRepository: asClass(IdeaRepository).singleton().singleton(),
+    CommentRepository: asClass(CommentRepository).singleton()
 });
 // 7.-nuevo controller \controllers\home.controller.js
 
@@ -63,4 +69,4 @@ module.exports = container;
 
 //16.-hecho el paso 15 volvemos al \startup\index.js
 
-// 25.-Terminado el punto 25 estamos listos para crear nuestros repositorios
+// 26.-Terminado el punto 25 estamos listos para crear nuestros repositorios, creando los archivos en \src\repositories\base.repository.js

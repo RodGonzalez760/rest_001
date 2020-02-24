@@ -17,12 +17,12 @@ UserSchema.methods.toJSON = function(){
     let user = this.toObject();
     delete user.password;
     return user;
-}
+};
 
 
 // Metodo para comparar las contraseñas encriptadas,todos los docs de mongo tendran esta funcion, en este caso this corresponde al doc que se está manipulando.
 UserSchema.methods.comparePassword = function(password){
-    return compareSync(password, this.password)
+    return compareSync(password, this.password);
 };
 
 // Metodos para la encriptación
@@ -35,7 +35,7 @@ UserSchema.pre('save', async function(next){
         return next();    
     }
 
-    const salt = genSaltSync(10):
+    const salt = genSaltSync(10);
     const hashedPassword = hashSync(user.password, salt);
     user.password = hashedPassword;
     next();

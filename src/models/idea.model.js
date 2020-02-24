@@ -5,7 +5,7 @@ const { Schema } = mongoose;
 // aqui conectamos la idea con un autor por medio de author: , también debemos instalar un nuevo complemento llamado mongoose-autopopulate
 const IdeaSchema = new Schema({
     idea: { type: String, required:true },
-    description: { type: string },
+    description: { type: String },
     upvotes: [{ type: Boolean }],
     downvotes: [{ type: Boolean }],
     author: {
