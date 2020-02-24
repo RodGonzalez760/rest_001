@@ -7,8 +7,8 @@ const config = require('../config');
 // 15.-llama a nuestra app->
 const app = require('.')
 
-// 6.-importamos services
-const { HomeService } = require('../services');
+// 6 y 31.-importamos services
+const { HomeService, UserService, IdeaService, CommentService } = require('../services');
 
 // 8.-controllers, importo HomeController desde la capa controllers->register
 const { HomeController } = require('../controllers')
@@ -36,7 +36,10 @@ container
     router: asFunction(Routes).singleton(),                 //13.-
     config: asValue(config)
 }).register({
-    HomeService: asClass(HomeService).singleton()       //se usa en el home.controller.js -> constructor({ HomeService }){}
+    HomeService: asClass(HomeService).singleton(),       //se usa en el home.controller.js -> constructor({ HomeService }){}
+    UserService: asClass(UserService).singleton(),
+    IdeaService: asClass(IdeaService).singleton(),
+    CommentService: asClass(CommentService).singleton()
 }).register({
     HomeController: asClass(HomeController.bind(HomeController)).singleton()   //mantiene el scope para que no se pierda    
 }).register({
@@ -70,3 +73,5 @@ module.exports = container;
 //16.-hecho el paso 15 volvemos al \startup\index.js
 
 // 26.-Terminado el punto 25 estamos listos para crear nuestros repositorios, creando los archivos en \src\repositories\base.repository.js
+
+// 30 Terminado el paso 29 para la configuración de los repositorios, procederemos a crear los Servicios al \services\ con un base.service.js
