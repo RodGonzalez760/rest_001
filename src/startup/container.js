@@ -116,4 +116,4 @@ module.exports = container;
 
 // 47 Configuradas las rutas de nuestro Auth (paso 46) probamos que la app no contenga errores y si está correcto podremos utilizar el middleware
 // que hemos creado para así proteger las rutas que queramos, por ej. ahora vamos a proteger la ruta user, entonces vamos al \routes\user.routes.js
-// y agregamos lo siguiente impportando const { AuthMiddleware } = require('../middlewares'); y agregamos AuthMiddleware a la ruta antes del metodo que resuelve dicha ruta
+// y agregamos lo siguiente importando const { AuthMiddleware } = require('../middlewares'); y agregamos AuthMiddleware a la ruta antes del metodo que resuelve dicha ruta

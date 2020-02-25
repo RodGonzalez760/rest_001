@@ -3,10 +3,13 @@
 
 const { Router } = require("express");
 
+// 52 agregamos el ParseIntMiddleware
+const { ParseIntMiddleware } = require('../middlewares');
+
 module.exports = function({ IdeaController }){
     const router = Router();
 
-    router.get("", IdeaController.getAll);          
+    router.get("",ParseIntMiddleware, IdeaController.getAll);          
     router.get("/:ideaId", IdeaController.get);  
     router.get("/:userId/all", IdeaController.getUserIdeas);         
     router.post("", IdeaController.create);
@@ -20,3 +23,7 @@ module.exports = function({ IdeaController }){
 
 
 // 36 completado el archivo se ingresa en el index.routes.js
+
+// 53 finalizada la paginación (pag 51), podemos probar el funcionamiento de nuestra app
+// para pageSize=               localhost:5000/v1/api/user?pageSize=7
+// pageSize con pageNum=        localhost:5000/v1/api/user?pageSize=2&pageNum=2

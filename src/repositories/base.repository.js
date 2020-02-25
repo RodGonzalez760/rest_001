@@ -11,8 +11,19 @@ class BaseRepository {
         return await this.model.findById(id);
     }
 
-    async getAll(){
-        return await this.model.find();
+    // 48 modificaciones para la paginación, agregamos PageSize y PageNum
+    // donde PageSize nos va a limitar la cantidad de recursos que vamos a traer desde mongoDB
+    // y     PageNum será la página que queremos ver
+    async getAll(pageSize = 5,  pageNum = 1){
+        // 48 mongoose tiene metodos que nos facilitarán la paginación skip y limit
+        // donde skip le dice a mongoose cuantos elementos debe saltar para comenzar a buscar
+        // y limit limita la cantidad de elementos que debe retornar
+        // Entonces ahora determinamos los skips
+        const skips = pageSize * (pageNum - 1); 
+        return await this.model
+            .find()
+            .skip(skips)
+            .limit(pageSize); 
     }
 
     async create(entity){
@@ -32,3 +43,5 @@ class BaseRepository {
 module.exports = BaseRepository;
 
 // 27 - Terminado el este proceso 26 continuamos creando los otros repositorios necesarios en este caso (user)
+
+// 49 terminado el paso 48 vamos al base.service.js ya que ahí tenemos el metodo getAll() donde debe recibir el pageSize y pageNum

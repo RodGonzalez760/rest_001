@@ -17,7 +17,9 @@ class IdeaController {
     }
 
     async getAll(req, res){
-        const ideas = await _ideaService.getAll();
+        // 51 paginación, destructuramos y enviamos al metodo getAll()
+        const { pageSize, pageNum } = req.query;
+        const ideas = await _ideaService.getAll(pageSize, pageNum);
         return res.send(ideas);
     }
 
@@ -63,3 +65,6 @@ class IdeaController {
 module.exports = IdeaController;
 
 // 33 Ya configurado se inserta en el index.js de \controllers\ 
+
+// 52 - agregadas las paginaciónes correspondientes debemos configurar las rutaas para que las rutas parseen la información necesaria
+// para este caso lo necesitamos en user.routes.js y idea.routes.js

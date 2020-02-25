@@ -17,8 +17,11 @@ class UserController {
 
     }
 
+    // 50 agregamos la paginación
     async getAll(req, res){
-        const users = await _userService.getAll();
+        // 50 destructuramos y enviamos al metodo getAll()
+        const { pageSize, pageNum } = req.query;
+        const users = await _userService.getAll( pageSize, pageNum );
         return res.send(users);
     }
 
@@ -39,3 +42,5 @@ class UserController {
 module.exports = UserController;
 
 // 33 Ya configurado se inserta en el index.js de \controllers\ 
+
+// 51 - agregada la paginación(paso 50) debemos agregarla tambien en idea.controller.js , **NOTA** La paginación se utiliza en todos los controladores donde exista la función getAll() o su equivalente.

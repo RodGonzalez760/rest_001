@@ -34,8 +34,9 @@ class BaseService{
     }
 
     // Muestra todas las Entidades
-    async getAll(){
-        return await this.repository.getAll();
+    // 49 agregamos pageSize y pageNum para la paginación para llevarlo al controller
+    async getAll(pageSize, pageNum){
+        return await this.repository.getAll(pageSize, pageNum);
     }
 
     // CREATE
@@ -71,3 +72,4 @@ class BaseService{
 module.exports = BaseService;
 
 // 31 TERMINADO EL PROCESO 30 Para la base de los servicios, pues creamos el resto de los servicios para las entidades(user, idea, comment)
+// 50 agregadas el pageSize y pageNum(paso 49) vamos al controller correspondiente (user.controller.js en este caso), para realizar la paginación en getAll() 
