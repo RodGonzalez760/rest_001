@@ -1,7 +1,7 @@
 // 28
 module.exports = {
     UserRepository: require('./user.repository'),
-    IdeaRepository: require('./ideas.repository'),
+    IdeaRepository: require('./idea.repository'),
     CommentRepository: require('./comment.repository')
 }
 

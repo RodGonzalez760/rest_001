@@ -8,11 +8,11 @@ class UserService extends BaseService{
         _userRepository = UserRepository;
     }
 
-    async getUserByUserName(username){
-        return await _userRepository.getUserByUserName(username)
+    async getUserByUsername(username){
+        return await _userRepository.getUserByUsername(username);
     }
 }
 
 module.exports = UserService;
 
-// 32 Terminado este proceso continuamos creando el resto de servicios y luego 
+// 32 Terminado este proceso continuamos creando el resto de servicios y luego procedemos a crear los controllers

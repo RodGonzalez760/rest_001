@@ -17,8 +17,5 @@ const CommentSchema = new Schema({
 // plugins: metodos que dan más poder a mongoose
 CommentSchema.plugin(require("mongoose-autopopulate"));
 
-
-
-
-//                               comment = será el nombre utilizado para hacer referencias
+//                              comment = será el nombre utilizado para hacer referencias
 module.exports = mongoose.model("comment", CommentSchema);

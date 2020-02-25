@@ -21,7 +21,7 @@ UserSchema.methods.toJSON = function(){
 
 
 // Metodo para comparar las contraseñas encriptadas,todos los docs de mongo tendran esta funcion, en este caso this corresponde al doc que se está manipulando.
-UserSchema.methods.comparePassword = function(password){
+UserSchema.methods.comparePasswords = function(password){
     return compareSync(password, this.password);
 };
 
@@ -40,8 +40,8 @@ UserSchema.pre('save', async function(next){
     user.password = hashedPassword;
     next();
 
-})
+});
 
-module.exports = mongoose.model('user', UserSchema);
+module.exports = mongoose.model("user", UserSchema);
 
 // 23 - TERMINADO EL PROCESO 22 - seguimos creando el modelo, en este caso un nuevo archivo idea.model.js el cual tiene basicamente el mismo codigo de este archivo

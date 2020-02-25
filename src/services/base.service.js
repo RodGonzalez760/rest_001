@@ -46,7 +46,7 @@ class BaseService{
     // UPDATE
     async update(id, entity){
         if (!id) {
-            const error = new Error;
+            const error = new Error();
             error.status = 400;
             error.message = "Id must be sent";
             throw error;
@@ -58,7 +58,7 @@ class BaseService{
     // DELETE
     async delete(id){
         if (!id) {
-            const error = new Error;
+            const error = new Error();
             error.status = 400;
             error.message = "Id must be sent";
             throw error;

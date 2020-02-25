@@ -1,5 +1,5 @@
 // 19.-Errores
-module.exports = (req, res, next) => {
+module.exports = (err, req, res, next) => {
     // captura el status informado en el error
     const httpStatus = err.status || 500;
 

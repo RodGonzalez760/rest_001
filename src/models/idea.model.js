@@ -13,8 +13,7 @@ const IdeaSchema = new Schema({
         ref: "user",
         required: true,
         autopopulate: true
-    },
-     // 24 debe crearse el modelo de comments -> models\comment.model.js
+    },     
     comments: [
         {
             type: Schema.Types.ObjectId,
@@ -24,6 +23,7 @@ const IdeaSchema = new Schema({
         }
     ]
 });
+// 24 arriba debe crearse el modelo de comments -> models\comment.model.js
 
 // CONFIGURAR EL PLUGIN DE MONGOOSE AUTOPOPULATE
 IdeaSchema.plugin(require("mongoose-autopopulate"));

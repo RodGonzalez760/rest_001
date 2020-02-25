@@ -5,16 +5,16 @@ let _commentRepository = null, _ideaRepository;
 class CommentService extends BaseService{
     constructor({ CommentRepository, IdeaRepository}){
         super(CommentRepository);
-        _commentRepository = UserRepository;
+        _commentRepository = CommentRepository;
         _ideaRepository = IdeaRepository;
     }
 
     // Trae los comentarios de una idea en especifico
-    async getIdeaComment(ideaId){
+    async getIdeaComments(ideaId){
         // si no encuentra
         if(!ideaId){
             const error = new Error();
-            const ststus = 400;
+            error.status = 400;
             error.message = "UserId must be sent";
             throw error;
         }
@@ -25,7 +25,7 @@ class CommentService extends BaseService{
         // si no existe
         if(!idea){
             const error = new Error();
-            const ststus = 404;
+            error.status = 404;
             error.message = "Idea does not exist";
             throw error;
         }
@@ -41,7 +41,7 @@ class CommentService extends BaseService{
         // si no encuentra
         if(!ideaId){
             const error = new Error();
-            const ststus = 400;
+            error.status = 400;
             error.message = "UserId must be sent";
             throw error;
         }
@@ -53,14 +53,14 @@ class CommentService extends BaseService{
         // si no existe
         if(!idea){
             const error = new Error();
-            const ststus = 404;
+            error.status = 404;
             error.message = "Idea does not exist";
             throw error;
         }
 
         // creamos un comentario, para que esto funcione debemos asegurarnos que en el body de nuestro POST se esté enviando el author 
         const createdComment = await _commentRepository.create( comment );
-        idea.comments.push
+        idea.comments.push(createdComment);
 
         return await _ideaRepository.update(ideaId, {comments: idea.comments });
     }
@@ -69,3 +69,4 @@ class CommentService extends BaseService{
 module.exports = CommentService;
 
 // 32 Terminado este proceso continuamos creando el resto de servicios y luego actualizamos el archivo container.js y probamos la app
+// 32 finalmente procedemos a crear los controllers

@@ -1,6 +1,6 @@
 // PROCESO 26 - Base o plantilla para un CRUD cuya responsabilidad va a ser heredada por otros repositorios
 
-class baseRepository {
+class BaseRepository {
     // Constructor que recibe el modelo de mongoDB con el que va a interactuar
     constructor(model){
         this.model = model;        
@@ -11,8 +11,8 @@ class baseRepository {
         return await this.model.findById(id);
     }
 
-    async geyAll(){
-        return await this.model.find;        
+    async getAll(){
+        return await this.model.find();
     }
 
     async create(entity){
@@ -20,14 +20,15 @@ class baseRepository {
     }    
 
     async update(id, entity){
-        return await this.model.findByIdAndUpdate(id, entity, {new: true}) //{new:true}retorna la entidad que ha sido actualizada con los campos
+        return await this.model.findByIdAndUpdate(id, entity, {new: true}); //{new:true}retorna la entidad que ha sido actualizada con los campos        
     }
 
     async delete(id){
-        return await this.model.findByIdAndDelete(id);
+        await this.model.findByIdAndDelete(id);
+        return true;
     }
 }
 
-module.exports = baseRepository;
+module.exports = BaseRepository;
 
 // 27 - Terminado el este proceso 26 continuamos creando los otros repositorios necesarios en este caso (user)
