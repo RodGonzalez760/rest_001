@@ -27,3 +27,4 @@ module.exports = function({ IdeaController }){
 // 53 finalizada la paginación (pag 51), podemos probar el funcionamiento de nuestra app
 // para pageSize=               localhost:5000/v1/api/user?pageSize=7
 // pageSize con pageNum=        localhost:5000/v1/api/user?pageSize=2&pageNum=2
+// 54 Para Continuar procederemos al Caching, complementando los principios RESTful
