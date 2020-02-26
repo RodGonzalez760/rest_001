@@ -31,3 +31,5 @@ module.exports = function({ UserController }){
 // para esto creamos un middleware nuevo de nombre parse-int.middleware.js
 
 ///////////// 57 terminado el proceso 56 podemos probar la funcionalidad de nuestra app a PostMan ////////
+
+// 58 a continuación implementaremos test, y vamos a crear el archivo jest.config.js en la raíz del proyecto
