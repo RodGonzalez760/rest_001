@@ -9,6 +9,12 @@ const compression = require('compression');     //middleware
 require("express-async-errors");    //captura las excepciones asyncronas que producen las promesas
 // 21.-nuevos middlewares
 const { NotFoundMiddleware, ErrorMiddleware } = require("../middlewares");
+// 67(3).-solicitamos swagger
+const swaggerUI = require('swagger-ui-express');
+// 67(3).-extraemos el path de swagger
+const { SWAGGER_PATH } = require('../config');
+// 67(3)trear nuestro documento json
+const swaggerDocument = require(SWAGGER_PATH);
 
 // inyección de dependencias
 module.exports = function({ 
@@ -36,8 +42,12 @@ module.exports = function({
     apiRoutes.use("/comment", CommentRoutes ); //38
     apiRoutes.use("/auth", AuthRoutes);     //44
 
+    // ruta base de la aplicación
     router.use("/v1/api", apiRoutes);
 
+    // 67(3) ruta para la documentacion, hace referencia a la parte UI de nuestro swagger
+    router.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocument));
+    
     // 21.-Nuevos Middlewares
     router.use(NotFoundMiddleware);
     router.use(ErrorMiddleware);

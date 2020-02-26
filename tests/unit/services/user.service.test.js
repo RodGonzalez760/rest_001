@@ -75,4 +75,19 @@ describe("User Service Tests", () => {
 // **NOTA** Los test tienen vital importancia ya que garantizan la calidad de nuestro código cuando realizamos continuos integration
 // para la integración de nuestro código a un repositorio de producción, de manera que solamente se podrá realizar integración si todos
 // los tests pasan, cada vez que se agrega una funcionalidad nueva a un software ya existente, es una buena practica realizarle tests,
-// asegurandonos que nuestro código no rompe la funcionalidad que ya el software tiene
+// asegurandonos que nuestro código no rompe la funcionalidad que ya el software tiene.
+
+
+// 66 - UNA VEZ TERMINADA LA IMPLEMENTACIÓN DE TODOS LOS TESTS PARA LA APLICACIÓN, PROCEDEMOS AL DESARROLLO DE LA DOCUMENTACIÓN,
+// Y PARA ESTO CRAREMOS UN NUEVO DIRECTORIO= \config\swagger y dentro crearemos 2 archivos JSON swaggerDEV.json y swaggerPROD.json
+
+
+// 67 - CREADOS EL DIRECTORIO Y LOS ARCHIVOS PARA SWAGGER VAMOS A INTEGRARLOS A LA APLICACION
+// (1) Vamos al archivo .env y agregamos SWAGGER_DOC=swaggerDEV (correspondiente a ambiente de desarrollo)
+// (2) Vamos al archivo \config\index.js y agregamos la variable SWAGGER_PATH: `../config/swagger/${process.env.SWAGGER_DOC}.json`
+//      con esto nos aseguramos que se configura el archivo que estemos usando según sea nuestro ambiente(desarrollo o producción)
+// (3) Vamos al archivo \routes\index.js y solicitamos los archivos de swagger
+// (4) terminados los pasos anteriores vamos a probar la app con > npm run dev
+//      para las pruebas quitamos la caché y la autenticacion de nuestro usuario en el archivo \routes\user.routes.js
+//   (original)   router.get("", [ParseIntMiddleware, CacheMiddleware( CACHE_TIME.ONE_HOUR )], UserController.getAll);
+//   (pruebas)    router.get("", [ParseIntMiddleware], UserController.getAll);

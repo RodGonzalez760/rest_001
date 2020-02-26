@@ -17,9 +17,9 @@ module.exports = function({ UserController }){
 
     
     router.get("/:userId", UserController.get);  
-    router.get("", [AuthMiddleware, ParseIntMiddleware, CacheMiddleware( CACHE_TIME.ONE_HOUR )], UserController.getAll);              //se mantendra el scope de UserController por el bind que hicimos en container.js
-    router.patch("/:userId", UserController.update);
-    router.delete("/:userId", UserController.delete);
+    router.get("", [ParseIntMiddleware, CacheMiddleware( CACHE_TIME.ONE_HOUR )], UserController.getAll);              //se mantendra el scope de UserController por el bind que hicimos en container.js
+    router.patch("/:userId", AuthMiddleware, UserController.update);
+    router.delete("/:userId", AuthMiddleware, UserController.delete);
 
     return router;
 };
