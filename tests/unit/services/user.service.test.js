@@ -91,3 +91,43 @@ describe("User Service Tests", () => {
 //      para las pruebas quitamos la caché y la autenticacion de nuestro usuario en el archivo \routes\user.routes.js
 //   (original)   router.get("", [ParseIntMiddleware, CacheMiddleware( CACHE_TIME.ONE_HOUR )], UserController.getAll);
 //   (pruebas)    router.get("", [ParseIntMiddleware], UserController.getAll);
+
+// =========================================API COMPLETA====================================
+// Realizaremos los toques finales de nuestra API
+// (1) pruebas endpoints vía postman
+        // (get)          localhost:5000/v1/api/user
+        // (get)          localhost:5000/v1/api/user/5e55533535ef2b550004d890
+        // (patch envía body con la propiedad del usuario a actualizar tipo json por ej: {"username": "Rodrigao"}) 
+              //          localhost:5000/v1/api/user/5e55533535ef2b550004d890
+        // (delete)       localhost:5000/v1/api/user/5e55533535ef2b550004d890
+        // (post)         localhost:5000/v1/api/auth/signin
+        // (post)         localhost:5000/v1/api/auth/signup
+        // (get)          localhost:5000/v1/api/idea
+        // (post)         localhost:5000/v1/api/idea/5e5591d6a256295580f1ecdf/upvote
+        // (post)         localhost:5000/v1/api/idea/5e5591d6a256295580f1ecdf/downvote
+        // (get)          localhost:5000/v1/api/idea/5e5591d6a256295580f1ecdf
+        // (patch)        localhost:5000/v1/api/idea/5e5591d6a256295580f1ecdf
+        // (post)         localhost:5000/v1/api/idea
+        // (delete)       localhost:5000/v1/api/idea/5e56933701ea4d56502a373d
+        // (get)          localhost:5000/v1/api/idea/5e558da1db03ca37a0285122/all
+        // (post)         localhost:5000/v1/api/comment/5e5591d6a256295580f1ecdf      //idIdea
+        // (get)          localhost:5000/v1/api/comment/5e56998dadcab93640828269/unique     //idComment
+        // (get)          localhost:5000/v1/api/comment/5e5591d6a256295580f1ecdf            //idIdea
+        // (patch)        localhost:5000/v1/api/comment/5e56998dadcab93640828269            //idComment
+        // (delete)       localhost:5000/v1/api/comment/5e56998dadcab93640828269            //idComment
+
+              
+// Formato crreación de usuarios (post) localhost:5000/v1/api/auth/signup
+// {
+//   "name": "StaniaRod",
+//   "username": "StaniaRod",
+//   "password": "myStrongPassword"
+// }
+
+// Formato para autenticarse y obtener token (post) localhost:5000/v1/api/auth/signin
+// {
+// 	"username": "StaniaRod",
+// 	"password": "myStrongPassword"
+// }
+// para autenticarnos agregar un key Authorization con el token obtenido
+

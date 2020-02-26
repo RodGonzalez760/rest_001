@@ -1,8 +1,6 @@
 // 32 - Creacion de los controllers
 // En el caso de los controllers no se hace un archivo base por el hecho de que el scope se pierde, sin embargo, hay formas de solucionar este problema, pero en esta ocación no se han hecho
-
 let _ideaService = null;
-
 class IdeaController {
     constructor({IdeaService}){
         _ideaService = IdeaService;
@@ -32,8 +30,8 @@ class IdeaController {
     async update(req, res){
         const { body } = req;
         const { ideaId } = req.params;
-        const updateIdea = await _ideaService.update(ideaId, body);
-        return res.send(updateIdea);
+        const updatedIdea = await _ideaService.update(ideaId, body);
+        return res.send(updatedIdea);
     }
 
     async delete(req, res){
@@ -50,13 +48,13 @@ class IdeaController {
 
     async upvoteIdea(req, res){
         const { ideaId } = req.params;
-        const idea = await _ideaService.updateIdea(ideaId);
+        const idea = await _ideaService.upvoteIdea(ideaId);
         return res.send(idea);
     }
 
     async downvoteIdea(req, res){
         const { ideaId } = req.params;
-        const idea = await _ideaService.updateIdea(ideaId);
+        const idea = await _ideaService.downvoteIdea(ideaId);
         return res.send(idea);
     }
     

@@ -26,7 +26,7 @@ class IdeaService extends BaseService{
         if(!ideaId){
             const error = new Error();
             error.status = 400;
-            error.message = "UserId must be sent";
+            error.message = "ideaId must be sent";
             throw error;
         }
 
@@ -35,13 +35,12 @@ class IdeaService extends BaseService{
         if(!idea){
             const error = new Error();
             error.status = 404;
-            error.message = "UserId must be sent";
+            error.message = "idea does not exist";
             throw error;
         }
 
-        idea.upvotes.push(true);
-
         // enviamos a la BD 
+        idea.upvotes.push(true);       
         return await _ideaRepository.update(ideaId, {upvotes: idea.upvotes});
     }
 
@@ -50,7 +49,7 @@ class IdeaService extends BaseService{
         if(!ideaId){
             const error = new Error();
             error.status = 400;
-            error.message = "UserId must be sent";
+            error.message = "ideaId must be sent";
             throw error;
         }
 
@@ -59,7 +58,7 @@ class IdeaService extends BaseService{
         if(!idea){
             const error = new Error();
             error.status = 404;
-            error.message = "UserId must be sent";
+            error.message = "idea does not exist";
             throw error;
         }
 

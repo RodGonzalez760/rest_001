@@ -37,7 +37,7 @@ class CommentService extends BaseService{
 
     // averiguamos a que idea se le va a crear el comentario y quien lo crea
 
-    async createComment(comment, ideaId){
+    async createComment(comment, ideaId, userId){
         // si no encuentra
         if(!ideaId){
             const error = new Error();
@@ -59,7 +59,8 @@ class CommentService extends BaseService{
         }
 
         // creamos un comentario, para que esto funcione debemos asegurarnos que en el body de nuestro POST se esté enviando el author 
-        const createdComment = await _commentRepository.create( comment );
+        //  {...comment, author: userId}  esto es un operador rest para ligar propiedades al objeto que estamos creando, donde userId es el 3er parametro que recibimos en la función
+        const createdComment = await _commentRepository.create( {...comment, author: userId} );
         idea.comments.push(createdComment);
 
         return await _ideaRepository.update(ideaId, {comments: idea.comments });
