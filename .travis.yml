@@ -1,8 +1,0 @@
-language: node_js
-node_js:
-- stable
-deploy:
-  provider: heroku
-  app: ideas-from-nodejs
-  api_key:
-    secure: 32bf8977-caea-447c-b99a-a70b1acc411d
