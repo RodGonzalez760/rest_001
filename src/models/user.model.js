@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 // BCRYPT para la encriptación de contraseñas 
-const { compareSync, hashSync, genSaltSync } = require('bcrypt');
+const { compareSync, hashSync, genSaltSync } = require('bcryptjs');
 
 const UserSchema = new Schema({
     name:       { type: String, required: true },
